@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Sports Field</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/tooplate-style.css">
+    <script>
+        function confirmBooking(event) {
+            event.preventDefault(); // منع إعادة تحميل الصفحة
+
+            // جلب بيانات الإدخال
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let phone = document.getElementById("phone").value;
+            let fieldType = document.getElementById("field-type").value;
+            let date = document.getElementById("date").value;
+            let time = document.getElementById("time").value;
+            let duration = document.getElementById("duration").value;
+
+            // التحقق من صحة الإدخال
+            if (name && email && phone && fieldType && date && time && duration) {
+                alert(`✅ Booking Confirmed!\n
+                Name: ${name}
+                Email: ${email}
+                Phone: ${phone}
+                Field: ${fieldType}
+                Date: ${date}
+                Time: ${time}
+                Duration: ${duration} hours`);
+                
+                // يمكنك هنا إرسال البيانات إلى API أو تخزينها في localStorage
+            } else {
+                alert("⚠ Please fill out all fields before confirming your booking.");
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <section class="navbar custom-navbar navbar-fixed-top">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">Sports Field Booking</a>
+        </div>
+    </section>
+
+    <!-- BOOKING FORM -->
+    <section id="booking" data-stellar-background-ratio="0.5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="section-title">
+                        <h1>Book Your Sports Field</h1>
+                    </div>
+                    <form id="booking-form">
+                        <div class="form-group">
+                            <label for="name">Full Name:</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address:</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number:</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="field-type">Select Field:</label>
+                            <select id="field-type" name="field-type" class="form-control" required>
+                                <option value="Standard Field">⚽ Standard Field - $50/hour</option>
+                                <option value="Premium Court">🏀 Premium Court - $100/hour</option>
+                                <option value="VIP Arena">🏆 VIP Arena - $200/hour</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date">Select Date:</label>
+                            <input type="date" id="date" name="date" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="time">Select Time:</label>
+                            <input type="time" id="time" name="time" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="duration">Booking Duration (hours):</label>
+                            <input type="number" id="duration" name="duration" class="form-control" min="1" max="6" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-success btn-block" onclick="confirmBooking(event)">Confirm Booking</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sports Field Booking. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
